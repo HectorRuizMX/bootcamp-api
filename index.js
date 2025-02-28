@@ -12,11 +12,13 @@ const app = express();
 const server = http.createServer(app);
 const port = process.env.PORT || 443;
 
-app.use((_req, res, next) =>{
+app.use((_req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Headers',
+    'Content-Type, Authorization, Origin, Referer, User-Agent, X-Requested-With, cross-origin-resource-policy, authorization'
+  );
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.removeHeader('x-powered-by');
   next();
 });
