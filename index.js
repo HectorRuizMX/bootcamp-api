@@ -12,14 +12,26 @@ const app = express();
 const server = http.createServer(app);
 const port = process.env.PORT || 443;
 
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: [
+    'Content-Type', 
+    'Authorization', 
+    'Content-Length', 
+    'X-Requested-With', 
+    'X-Forwarded-Port', 
+    'X-Forwarded-Proto', 
+    'X-Forwarded-For', 
+    'Origin', 
+    'Referer', 
+    'User-Agent'
+  ],
+  credentials: true,
+}));
+
 app.use((_req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers',
-    'Content-Type, Authorization, Content-Length, X-Requested-With, X-Forwarded-Port, X-Forwarded-Proto, X-Forwarded-For, Origin, Referer, User-Agent, '
-  );
-  res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
   res.removeHeader('x-powered-by');
   next();
 });
@@ -29,7 +41,7 @@ app.use(bodyParser.json());
 app.get('/', (_req, res) => {
   return res.send({
     app: 'ContabilidadAPI',
-    version: '1.0.3',
+    version: '1.0.4',
   });
 });
 
