@@ -12,8 +12,6 @@ const app = express();
 const server = http.createServer(app);
 const port = process.env.PORT || 443;
 
-app.use(auth);
-app.use(cors());
 app.use((_req, res, next) =>{
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -22,12 +20,13 @@ app.use((_req, res, next) =>{
   res.removeHeader('x-powered-by');
   next();
 });
+app.use(auth);
 app.use(bodyParser.json());
 
 app.get('/', (_req, res) => {
   return res.send({
     app: 'ContabilidadAPI',
-    version: '1.0.1',
+    version: '1.0.2',
   });
 });
 
