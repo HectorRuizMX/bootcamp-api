@@ -15,6 +15,8 @@ const port = process.env.PORT || 443;
 app.use(auth);
 app.use(cors({
   origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'authorization'],
 }));
 app.use(bodyParser.json());
 
