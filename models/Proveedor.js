@@ -13,7 +13,7 @@ const ProveedorDef = (sequelize, DataTypes) => {
         field: "NOMBRE",
       },
       apellidos: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         field: 'APELLIDOS'
       }
     },

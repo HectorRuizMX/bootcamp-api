@@ -33,11 +33,11 @@ const CuentaDetalleDef = (sequelize, DataTypes) => {
         field: "DESCRIPCION",
       },
       cargo: {
-        type: DataTypes.FLOAT,
+        type: DataTypes.DECIMAL,
         field: 'CARGO'
       },
       abono: {
-        type: DataTypes.FLOAT,
+        type: DataTypes.DECIMAL,
         field: 'ABONO'
       },
       fechaHora: {
@@ -45,7 +45,7 @@ const CuentaDetalleDef = (sequelize, DataTypes) => {
         field: "FECHAHORA",
       },
       saldo: {
-        type: DataTypes.FLOAT,
+        type: DataTypes.DECIMAL,
         field: 'SALDO'
       }
     },

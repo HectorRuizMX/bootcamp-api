@@ -18,7 +18,7 @@ const CuentaDef = (sequelize, DataTypes) => {
         defaultValue: 0,
       },
       saldoInicial: {
-        type: DataTypes.DATE,
+        type: DataTypes.DECIMAL,
         field: "SALDOINICIAL",
       },
     },
