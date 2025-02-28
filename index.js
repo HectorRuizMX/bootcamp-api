@@ -13,17 +13,21 @@ const server = http.createServer(app);
 const port = process.env.PORT || 443;
 
 app.use(auth);
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'authorization'],
-}));
+app.use(cors());
+app.use((_req, res, next) =>{
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.removeHeader('x-powered-by');
+  next();
+});
 app.use(bodyParser.json());
 
 app.get('/', (_req, res) => {
   return res.send({
     app: 'ContabilidadAPI',
-    version: '1.0.0',
+    version: '1.0.1',
   });
 });
 
