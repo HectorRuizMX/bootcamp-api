@@ -16,8 +16,9 @@ app.use((_req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers',
-    'Content-Type, Authorization, Origin, Referer, User-Agent, X-Requested-With, cross-origin-resource-policy, authorization'
+    'Content-Type, Authorization, Origin, Referer, User-Agent, X-Requested-With'
   );
+  res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.removeHeader('x-powered-by');
   next();
@@ -28,7 +29,7 @@ app.use(bodyParser.json());
 app.get('/', (_req, res) => {
   return res.send({
     app: 'ContabilidadAPI',
-    version: '1.0.2',
+    version: '1.0.3',
   });
 });
 
