@@ -16,7 +16,7 @@ app.use((_req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers',
-    'Content-Type, Authorization, Origin, Referer, User-Agent, X-Requested-With'
+    'Content-Type, Authorization, Content-Length, X-Requested-With, X-Forwarded-Port, X-Forwarded-Proto, X-Forwarded-For, Origin, Referer, User-Agent, '
   );
   res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
   res.setHeader('Access-Control-Allow-Credentials', 'true');
