@@ -19,19 +19,13 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With, cache-control, token, X-Forwarded-Port, X-Forwarded-Proto, X-Forwarded-For');
   res.header('Access-Control-Expose-Headers', 'Row-Count, X-RateLimit-Reset');
 });
-
-app.use((_req, res, next) => {
-  res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
-  res.removeHeader('x-powered-by');
-  next();
-});
 app.use(auth);
 app.use(bodyParser.json());
 
 app.get('/', (_req, res) => {
   return res.send({
     app: 'ContabilidadAPI',
-    version: '1.0.4',
+    version: '1.0.5',
   });
 });
 
