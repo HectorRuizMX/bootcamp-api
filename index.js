@@ -12,23 +12,13 @@ const app = express();
 const server = http.createServer(app);
 const port = process.env.PORT || 443;
 
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: [
-    'Content-Type', 
-    'Authorization', 
-    'Content-Length', 
-    'X-Requested-With', 
-    'X-Forwarded-Port', 
-    'X-Forwarded-Proto', 
-    'X-Forwarded-For', 
-    'Origin', 
-    'Referer', 
-    'User-Agent'
-  ],
-  credentials: true,
-}));
+app.use(cors());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With, cache-control, token, X-Forwarded-Port, X-Forwarded-Proto, X-Forwarded-For');
+  res.header('Access-Control-Expose-Headers', 'Row-Count, X-RateLimit-Reset');
+});
 
 app.use((_req, res, next) => {
   res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
